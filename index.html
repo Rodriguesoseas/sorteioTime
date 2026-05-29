@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteio de Equipes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Sorteio de Equipes (Azul x Vermelho)</h1>
+      <p>Cole uma lista de nomes e clique em <strong>Sortear</strong>.</p>
+    </header>
+
+    <main class="container">
+      <nav class="tabs" aria-label="Navegação de abas">
+        <button
+          id="tabTeams"
+          class="tab isActive"
+          type="button"
+          aria-selected="true"
+          aria-controls="panelTeams"
+        >
+          Equipes
+        </button>
+        <button
+          id="tabLanes"
+          class="tab"
+          type="button"
+          aria-selected="false"
+          aria-controls="panelLanes"
+        >
+          Lanes
+        </button>
+      </nav>
+
+      <section id="panelTeams" class="tabPanel isActive" role="region" aria-label="Aba de equipes">
+        <section class="card">
+          <h2>Lista de nomes</h2>
+          <p class="hint">
+            Se você colar mais de 10 nomes, eu sorteio 10 aleatórios e divido em duas equipes (5 e 5).
+          </p>
+
+          <textarea
+            id="namesInput"
+            rows="12"
+            spellcheck="false"
+            placeholder="Ex:&#10;Ana&#10;Bruno&#10;Carla&#10;...&#10;"
+          >
+        </textarea>
+
+          <div class="actions">
+            <button id="sortButton" type="button">Sortear</button>
+            <button id="clearButton" type="button" class="secondary">Limpar</button>
+          </div>
+
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="card results">
+          <div class="teamGrid">
+            <div class="team blue">
+              <h2>Equipe Azul</h2>
+              <ul id="blueList" class="teamList"></ul>
+            </div>
+
+            <div class="team red">
+              <h2>Equipe Vermelho</h2>
+              <ul id="redList" class="teamList"></ul>
+            </div>
+          </div>
+          <p class="footerNote">
+            Dica: use <strong>uma pessoa por linha</strong> (ou separe por vírgula / ponto e vírgula).
+          </p>
+        </section>
+      </section>
+
+      <section id="panelLanes" class="tabPanel" role="region" aria-label="Aba de lanes">
+        <section class="card">
+          <h2>Sorteio de lanes</h2>
+          <p class="hint">
+            Primeiro sorteie as equipes. Depois, clique em <strong>Sortear lanes</strong> para atribuir
+            <strong>TOP</strong>, <strong>JUNGLE</strong>, <strong>MID</strong>, <strong>ADC</strong> e
+            <strong>SUPORTE</strong> (1 de cada) em cada time.
+          </p>
+
+          <div class="actions">
+            <button id="sortLanesButton" type="button">Sortear lanes</button>
+          </div>
+
+          <div id="lanesMessage" class="message" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="card results">
+          <div class="teamGrid">
+            <div class="team blue">
+              <h2>Equipe Azul (lanes)</h2>
+              <ul id="blueLanesList" class="teamList"></ul>
+            </div>
+
+            <div class="team red">
+              <h2>Equipe Vermelho (lanes)</h2>
+              <ul id="redLanesList" class="teamList"></ul>
+            </div>
+          </div>
+          <p class="footerNote">
+            Atalho: depois de sortear equipes, você pode ir direto na aba <strong>Lanes</strong>.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <div id="countdown" class="countdown" hidden aria-hidden="true">
+      <span id="countdownNumber" class="countdownNumber" aria-live="polite"></span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
